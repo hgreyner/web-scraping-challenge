@@ -52,7 +52,7 @@ def scrape_info():
     featured_image = soup2.find('figure', class_='lede').a['href']
 
     # Compose url with initial url and image url
-    featured_image_url = f'https://www.jpl.nasa.gov/spaceimages{featured_image}'
+    featured_image_url = f'https://www.jpl.nasa.gov/{featured_image}'
 
     
     ############## Mars Weather ##############

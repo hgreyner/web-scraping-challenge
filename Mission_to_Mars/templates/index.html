@@ -22,15 +22,21 @@
 </head>
 
 <body>
+  
+  <div class="container-fluid">
+
+<!--Top Section with buttom to start scrape app-->
+
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1><b>Mission to Mars</b></h1>
+      <h1><b>Welcome to Mars</b></h1>
+      <h4>A lonely cold (like really cold) ugly planet one day you may call home</h4>
       <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
     </div>
-</div>
+  </div>
 
-
-<div class="row">
+<!--Section with Latest Mars News-->
+  <div class="row">
     <div class="col-md-12">
       <div class="media">
         <div class="media-body">
@@ -41,59 +47,64 @@
         </div>
       </div>
     </div>
-</div>
-
-
-<div class="row">
-
- 
-  <div class="col-md-8">
-    <h3><b>Featured Mars Image</b></h3>
-    <img src={{mars_data.featured_image_url}} height=auto width=750px>
   </div>
 
+<!--Section with Featured Mars Image-->
+  <div class="row">
+    <div class="col-md-8">
+      <h3><b>Featured Mars Image</b></h3>
+      <img src={{mars_data.featured_image_url}} alt="Featured Image from Mars" height=600px>
+    </div>
 
-  <div class="col-md-4">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h4><b>Current Weather on Mars</b></h4>
-            {{mars_data.mars_weather}}
-            <hr class="my-4">
+<!--Section with Current Weather on Mars-->
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h4><b>Current Weather on Mars</b></h4>
+              {{mars_data.mars_weather}}
+              <hr class="my-4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--Section with Mars Facts-->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h4><b>Mars Facts</b></h4>
+              <p>{{mars_data.mars_facts | safe}}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h4><b>Mars Facts</b></h4>
-            <p>{{mars_data.mars_facts | safe}}</p>
-          </div>
+<!--Section with Mars Hemispheres-->  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h3><b>Mars Hemispheres</b></h3>
         </div>
       </div>
-    </div>       
-  </div>
-</div>
-
-<div class="row" style="margin-top:80px;">
-  <div class="page-header">
-    <h2 class="text-center"><b>Mars Hemispheres</b></h2>
-  </div>
-  {% for hemisphere in mars_data.hemisphere_image_urls %}
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <img src="{{hemisphere.img_url}}" class="card-img-top" alt="hemisphere.img_url">
-      <div class="card-body">
-        <h5 class="card-title">{{hemisphere.title}}</h5>
-        </div>
     </div>
-{% endfor %}
+    <hr class="my-4">
 
-</div>
-</body>
+    <div class="container">
+
+      <div class="row row-cols-2">
+        {% for hemisphere in mars_data.hemisphere_image_urls %}
+        <div class="col">
+          <h3>{{hemisphere.title}}</h3>
+          <img src="{{hemisphere.img_url}}" class="align-self-start mr-3" alt="hemisphere images" height="500px">
+        </div>
+        {% endfor %}
+      </div>
+    </body>
+
 </html>
