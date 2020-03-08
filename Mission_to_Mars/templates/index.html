@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Scrapping Challenge</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1><b>Mission to Mars</b></h1>
+      <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h3><b>Latest Mars News</b></h3>
+          <h4 class="heading">{{mars_data.news_title}}</h4>
+          <p>{{mars_data.news_p}}</p>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+ 
+  <div class="col-md-8">
+    <h3><b>Featured Mars Image</b></h3>
+    <img src={{mars_data.featured_image_url}} height=auto width=750px>
+  </div>
+
+
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4><b>Current Weather on Mars</b></h4>
+            {{mars_data.mars_weather}}
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4><b>Mars Facts</b></h4>
+            <p>{{mars_data.mars_facts | safe}}</p>
+          </div>
+        </div>
+      </div>
+    </div>       
+  </div>
+</div>
+
+<div class="row" style="margin-top:80px;">
+  <div class="page-header">
+    <h2 class="text-center"><b>Mars Hemispheres</b></h2>
+  </div>
+  {% for hemisphere in mars_data.hemisphere_image_urls %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <img src="{{hemisphere.img_url}}" class="card-img-top" alt="hemisphere.img_url">
+      <div class="card-body">
+        <h5 class="card-title">{{hemisphere.title}}</h5>
+        </div>
+    </div>
+{% endfor %}
+
+</div>
+</body>
+</html>
